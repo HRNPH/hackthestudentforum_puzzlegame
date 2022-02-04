@@ -1,3 +1,10 @@
+.bordered {
+    width: auto;
+    height: auto;
+    padding: 0;
+    border: 10px solid #ff7c01;
+    border-radius: 10px;
+}
 .main_header{
     display:flex;
     justify-content:center;
@@ -10,20 +17,34 @@
 }
 .nav_bar{
     display: flex;
-    background-color:black;
+    justify-content: space-between;
     max-width: 100%;
     max-height: 5vh;
     align-items: center;
+    background-color: #ff7c01;
+    padding: 0;
 }
 .bar{
     flex: 100;
     text-align: center;
-    padding: 1%;
     color: white;
     font-size: 1.5rem;
-    margin: 0 auto;
-    padding: 0;
+    font-weight: bold;
     cursor: pointer;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+}
+.bar.active{
+    background-color: white;
+    color: black;
+}
+.bar:hover{
+    color: black;
+    background-color: white;    
+}
+.bar_text{
+    margin: 0;
 }
 .nav_divider{
     flex: 1;
@@ -37,7 +58,11 @@
     flex: 1;
     background-color: #f8a04d;
 }
-.content_diary_container{
-    flex: 8;
-    margin:1%;
+.content_login_bordered {
+    background-color: #f8a04d;
+    width: auto;
+    height: auto;
+    padding: 0;
+    border: 10px solid #f5c181;
+    border-radius: 10px;
 }
