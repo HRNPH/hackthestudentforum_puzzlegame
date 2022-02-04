@@ -1,0 +1,51 @@
+.content_diary_container{
+    flex: 8;
+    margin:1%;
+
+}
+.diary{
+    display: flex;
+    justify-content: space-between;
+    color:  red;
+    max-width: 1400px;
+    max-height: 400px;
+    min-height: 100px;
+    margin: 0 auto;
+    background: black;
+    border-radius: 20px;
+    padding: 2%;
+    
+}
+.diary.diary:hover{
+    background-color: rgb(53, 4, 4);
+    color:  red;
+    cursor: pointer;
+}
+.diary.diary.pointers{
+    cursor: pointer;
+}
+.diary_header{
+    display: flex;
+    color:  red;
+    font-size: 1.5em;
+}
+.diary_author{
+    flex: 1;
+    color:  red;
+}
+.diary_title{
+    flex: 8;
+    color:  red;
+    margin-left: 10%;
+}
+.spacing{
+    background:  black;
+}
+.diary_bordered{
+    background-color: black;
+    width: auto;
+    height: auto;
+    padding: 0;
+    border: 10px solid red;
+    border-radius: 10px;
+}

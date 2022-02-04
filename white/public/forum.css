@@ -1,0 +1,30 @@
+.forum_bordered{
+    width: auto;
+    height: auto;
+    padding: 10px;
+    border: 10px solid #ff7c01;
+    border-radius: 10px;
+
+}
+.forum_structure{
+    list-style-type: none;
+    text-align: center;
+}
+.forum_article{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ccc;
+    padding: 1%;
+    padding-right: 0;
+    padding-left: 0;
+}
+.forum_article_content{
+    font-size: 1.2vw;
+}
+a:link {color:#f8a04d;}    /* normal link */
+a:visited {color:#f5c181;} /* visited link */
+a:hover {color:#f8a04d}   /* mouse over link */
+a:active {color:#f5c181}   /* selected link */
+
