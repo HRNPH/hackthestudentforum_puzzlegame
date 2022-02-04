@@ -1,0 +1,25 @@
+.main_header{
+    display:flex;
+    justify-content:center;
+    background: #f8a04d;
+    color:  white;
+    
+}
+.body_container{
+    background-color: white;
+}
+.nav_bar{
+    background-color:black;
+}
+.content_container{
+    display: flex;
+    justify-content: center;
+}
+.content_login{
+    flex: 1;
+    background-color: #f8a04d;
+}
+.content_diary_container{
+    flex: 8;
+    margin:1%;
+}
