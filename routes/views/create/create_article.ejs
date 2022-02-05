@@ -12,9 +12,10 @@
         <div class="form">
             <input type="text" name="title" placeholder="Title">
             <input type="text" name="author" placeholder="Author">
+            <input type="text" name="description" placeholder="description">
             <div id="summernote"></div>
             <button class="submit">Submit</button>
-            <h4 class="submit_result">adadad</h4>
+            <h4 style="color: red;"class="submit_result">Status:</h4>
         </div>
         <script>
             $('.submit').click(function(){
@@ -25,12 +26,18 @@
                     data: {
                         "title": $('input[name=title]').val(),
                         "author": $('input[name=author]').val(),
+                        "description": $('input[name=description]').val(),
                         "content": $('#summernote').summernote('code'),
                     },
                     type: 'post',
                     success: function(data)
                     {
-                        $('.submit_result').text(data['message']+' '+data['error']['message']);
+                        try{
+                            $('.submit_result').text(data['message']+' '+data['error']['message']);
+                        }
+                        catch(err){
+                            $('.submit_result').text(data['message']);
+                        }
                     }
                 });
             });

@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const Article = mongoose.model('Article', {
     title: {type: String, required: true},
     author: {type: String, required: true},
+    description: {type: String, required: true},
     content: {type: String, required: true},
     date: {type: Date, required: true},
 });

@@ -16,6 +16,7 @@ router.post('/create_article/create', (req, res) => {
     const article = new Article({
         title: req.body.title,
         author: req.body.author,
+        description: req.body.description,
         content: req.body.content,
         date: timestamp,
     })
