@@ -9,7 +9,7 @@ router.get('/', (req , res) => {
     //get the data from the api
     
     const response = axios.get('http://localhost:3000/dark/get_article/.').then((article_list) => {
-      console.log(article_list.data);
+      // console.log(article_list.data);
       var title = []
       var author = []
       var description = []

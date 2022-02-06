@@ -27,4 +27,9 @@ a:link {color:#f8a04d;}    /* normal link */
 a:visited {color:#f5c181;} /* visited link */
 a:hover {color:#f8a04d}   /* mouse over link */
 a:active {color:#f5c181}   /* selected link */
-
+#hidden_text{
+    color:white;
+}
+#hidden_html{
+    display: none;
+}
