@@ -6,6 +6,7 @@
     <title>Nawameow Forum</title>
     <link rel="stylesheet" href="/dark/index.css">
     <link rel="stylesheet" href="/dark/diary.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="bordered">
@@ -13,7 +14,7 @@
 
             <div>
                 <header class="main_header">
-                    <h1>Nawameow : Student Forum</h1>
+                    <h1>Everyone have their own SECRET</h1>
                 </header>
             </div>
 
@@ -26,7 +27,7 @@
                         </div>
                         <div class="nav_divider"><p>|</p></div>
                         <div class="bar">
-                            <p class="bar_text">All</p>
+                            <p class="bar_text"><i class="hidden_cl">there's a hidden</i> <i class="hidden_cl">article pages</i></p>
                         </div>
                     </ul>
                 </div>
@@ -35,67 +36,23 @@
                         <div class="content_login_bordered">
                             <div class="content_login">
                                 <!-- create login form -->
-                                <p align="center"><b>Login</b></p>
+                                <p align="center"><b>secret seeker</b></p>
                                 <form action="/login" method="post">
                                     <div class="login_form">
-                                        <input type="text" name="username" id="username" placeholder="Username">
+                                        <input type="text" name="id" id="id" placeholder="article_id">
                                     </div>
                                     <div class="login_form">
-                                        <input type="password" name="password" id="password" placeholder="Password">
+                                        <input type="text" name="key" id="key" placeholder="key">
                                     </div>
-                                    <div class="login_form">
-                                        <input type="submit" value="Login">
+                                    <div align="center" class="login_form">
+                                        <input type="submit" value="seek">
                                     </div>
                             </div>
                         </div>
                     
                     <div class="content_diary_container">
-                        <ul>
-                            <article class="diary_card_container">
-                                <div class="diary_bordered">
-                                    <div class="diary">
-                                        <li>
-                                            <div class="diary_header">
-                                                <div class="diary_author">
-                                                    <p align="center"><b>Author:</b></p>
-                                                </div>
-                                                <div class="diary_title">  
-                                                    <p>I loved Study so much but i hate school</p>
-                                                </div>
-                                            </div>
-                                            <div class="diary_description">
-                                                <p>
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet corporis voluptates repellendus iusto aut cupiditate, inventore doloribus natus velit, ut non nulla ipsam facere corrupti necessitatibus, in sapiente ab sint.
-                                                </p>
-                                            </div>
-                                        </li>
-                                    </div>
-                                </div>
-                                <div class="spacing"><br></div>
-                            </article>
-                            <article class="diary_card_container">
-                                <div class="diary_bordered">
-                                    <div class="diary">
-                                        <li>
-                                            <div class="diary_header">
-                                                <div class="diary_author">
-                                                    <p align="center"><b>Author:</b></p>
-                                                </div>
-                                                <div class="diary_title">  
-                                                    <p>I loved Study so much but i hate school</p>
-                                                </div>
-                                            </div>
-                                            <div class="diary_description">
-                                                <p>
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet corporis voluptates repellendus iusto aut cupiditate, inventore doloribus natus velit, ut non nulla ipsam facere corrupti necessitatibus, in sapiente ab sint.
-                                                </p>
-                                            </div>
-                                        </li>
-                                    </div>
-                                </div>
-                                <div class="spacing"><br></div>
-                            </article>
-
+                        <ul class="diary_list">
+                            <%- diary_cards%>
                         </ul>
                     </div>
                     
@@ -105,4 +62,6 @@
 
         </div>
     </div>
+
+    </script>
 </body>

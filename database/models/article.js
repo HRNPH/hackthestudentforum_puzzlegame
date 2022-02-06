@@ -7,6 +7,14 @@ const Article = mongoose.model('Article', {
     author: {type: String, required: true},
     description: {type: String, required: true},
     content: {type: String, required: true},
+    hidden: {type: Boolean, required: true},
+
+    key: {type: String, required: true},
+    secret_title: {type: String, required: true},
+    secret_description: {type: String, required: true},
+    secret_content: {type: String, required: true},
+    
+    
     date: {type: Date, required: true},
 });
 

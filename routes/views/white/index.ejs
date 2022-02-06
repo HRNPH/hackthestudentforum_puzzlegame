@@ -6,6 +6,7 @@
     <title>Nawameow Forum</title>
     <link rel="stylesheet" href="/white/index.css">
     <link rel="stylesheet" href="/white/diary.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="bordered">
@@ -26,7 +27,7 @@
                         </div>
                         <div class="nav_divider"><p>|</p></div>
                         <div class="bar">
-                            <p class="bar_text">All</p>
+                            <p class="bar_text"><i class="hidden_cl">there's hidden</i>All <i class="hidden_cl">article page</i></p>
                         </div>
                     </ul>
                 </div>
@@ -41,7 +42,7 @@
                                         <input type="text" name="username" id="username" placeholder="Username">
                                     </div>
                                     <div class="login_form">
-                                        <input type="password" name="password" id="password" placeholder="Password">
+                                        <input type="password" name="password" id="password" placeholder="Password - 4 digits number">
                                     </div>
                                     <div class="login_form">
                                         <input type="submit" value="Login">
@@ -50,52 +51,8 @@
                         </div>
                     
                     <div class="content_diary_container">
-                        <ul>
-                            <article class="diary_card_container">
-                                <div class="diary_bordered">
-                                    <div class="diary">
-                                        <li>
-                                            <div class="diary_header">
-                                                <div class="diary_author">
-                                                    <p align="center"><b>Author:</b></p>
-                                                </div>
-                                                <div class="diary_title">  
-                                                    <p>I loved Study so much but i hate school</p>
-                                                </div>
-                                            </div>
-                                            <div class="diary_description">
-                                                <p>
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet corporis voluptates repellendus iusto aut cupiditate, inventore doloribus natus velit, ut non nulla ipsam facere corrupti necessitatibus, in sapiente ab sint.
-                                                </p>
-                                            </div>
-                                        </li>
-                                    </div>
-                                </div>
-                                <div class="spacing"><br></div>
-                            </article>
-                            <article class="diary_card_container">
-                                <div class="diary_bordered">
-                                    <div class="diary">
-                                        <li>
-                                            <div class="diary_header">
-                                                <div class="diary_author">
-                                                    <p align="center"><b>Author:</b></p>
-                                                </div>
-                                                <div class="diary_title">  
-                                                    <p>I loved Study so much but i hate school</p>
-                                                </div>
-                                            </div>
-                                            <div class="diary_description">
-                                                <p>
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet corporis voluptates repellendus iusto aut cupiditate, inventore doloribus natus velit, ut non nulla ipsam facere corrupti necessitatibus, in sapiente ab sint.
-                                                </p>
-                                            </div>
-                                        </li>
-                                    </div>
-                                </div>
-                                <div class="spacing"><br></div>
-                            </article>
-
+                        <ul class="diary_list">
+                            <%- diary_cards%>
                         </ul>
                     </div>
                     
@@ -105,4 +62,6 @@
 
         </div>
     </div>
+
+    </script>
 </body>

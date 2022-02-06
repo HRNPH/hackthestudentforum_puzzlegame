@@ -10,16 +10,45 @@
     <div style="text-align: center;">
         <h1>Article Creator</h1>
         <div class="form">
-            <input type="text" name="title" placeholder="Title">
-            <input type="text" name="author" placeholder="Author">
-            <input type="text" name="description" placeholder="description">
-            <div id="summernote"></div>
+            <div>
+                <input type="text" name="author" placeholder="Author">
+            </div>
+            <div>
+                <input type="text" name="key" placeholder="secret_key">
+            </div>
+ 
+            <label for="hidden">hidden : for testing</label>
+
+            <input type="checkbox" id="hidden" name="hidden">
+            
+            <div style="display: flex; justify-content: center;">
+                <div>
+                    <input type="text" name="title" placeholder="Title">
+                    <input type="text" name="description" placeholder="description">
+                    <div style="flex: 1;"class="summernote" id="content">content</div>
+                </div>
+                <div>
+                    <input type="text" name="secret_title" placeholder="secret_title">
+                    <input type="text" name="secret_description" placeholder="secret_description">
+                    <div style="flex: 1; background-color: black;"class="summernote" id="secret_content">secret_content</div>
+                </div>
+                
+            </div>
+            
             <button class="submit">Submit</button>
             <h4 style="color: red;"class="submit_result">Status:</h4>
         </div>
         <script>
-            $('.submit').click(function(){
-            
+            $('.submit').click(() => {
+                let hidden
+                if ($('input[name="hidden"]').is(':checked')) {
+                    hidden = true;
+                } else {
+                    hidden = false;
+                }
+                
+                console.log(hidden);
+                
                 $.ajax
                 ({ 
                     url: '/create/create_article/create',
@@ -27,7 +56,13 @@
                         "title": $('input[name=title]').val(),
                         "author": $('input[name=author]').val(),
                         "description": $('input[name=description]').val(),
-                        "content": $('#summernote').summernote('code'),
+                        "hidden" : hidden,
+                        "content": $('#content.summernote').summernote('code'),
+
+                        "key": $('input[name=key]').val(),
+                        "secret_title": $('input[name=secret_title]').val(),
+                        "secret_description": $('input[name=secret_description]').val(),
+                        "secret_content": $('#secret_content.summernote').summernote('code')
                     },
                     type: 'post',
                     success: function(data)
@@ -43,8 +78,41 @@
             });
             </script>
     </div>
+    <div style="display:flex; align-items: center; flex-direction: column; justify-content: center;">
+        <h1>User Creator</h1>
+        <div>
+            <input type="text" name="username" placeholder="username">
+            <input type="text" name="password" placeholder="password">
+            <button class="new_user">New User</button>
+        </div>
+            <p style="color: red;" class="user_result">Status</p>
+        <script>
+            $('.new_user').click(() => {
+                $.ajax
+                ({ 
+                    url: '/create/create_user/create',
+                    data: {
+                        "username": $('input[name=username]').val(),
+                        "password": $('input[name=password]').val()
+                    },
+                    type: 'post',
+                    success: function(data)
+                    {
+                        try{
+                            $('.user_result').text(data['message']+' '+data['error']['message']);
+                        }
+                        catch(err){
+                            $('.user_result').text(data['message']);
+                        }
+                    }
+                });
+            });
+            </script>
+        </script>
+        
+    </div>
     <script>
-        $('#summernote').summernote({
+        $('.summernote').summernote({
             placeholder: 'Hello stand alone ui',
             tabsize: 2,
             height: 120,
@@ -60,14 +128,12 @@
         });
         </script>
         <script>
-            $('#summernote').summernote({
+            $('.summernote').summernote({
                 height: 500,                 // set editor height
                 minHeight: null,             // set minimum height of editor
                 maxHeight: null,             // set maximum height of editor
                 focus: true                  // set focus to editable area after initializing summernote
             });
         </script>
-    
-    
   </body>
 </html>
