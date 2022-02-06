@@ -26,7 +26,7 @@ router.get('/index/:key/:card_id/:card_key', (req , res) => {
       }
       
       Article.findOne({_id:o_id}, (err, article) => {
-        console.log(article);
+        // console.log(article);
         if (err){
           res.status(404);
           res.render(__dirname +'/views/error/404.ejs',{'error': '404 Error wrong id/key'});
@@ -34,7 +34,7 @@ router.get('/index/:key/:card_id/:card_key', (req , res) => {
         } 
         else{
           try{
-          console.log(article);
+          // console.log(article);
           if (req.params.card_key.toLowerCase() == article.key.toLowerCase()) {
             
             res.render(__dirname +'/views/dark/index.ejs',{'diary_cards': cards([article.secret_title],[article.author],[article.secret_description],[article._id],[article.key],true)});
@@ -64,7 +64,7 @@ router.get('/article/:id/:key', (req , res) => {
   let id = req.params.id;
   let o_id = ObjectId(id);
   Article.findOne({_id:o_id}, (err, article) => {
-    console.log(article);
+    // console.log(article);
     if (err){
       res.status(404);
       res.render(__dirname +'/views/error/404.ejs',{'error': '404 no article found'});

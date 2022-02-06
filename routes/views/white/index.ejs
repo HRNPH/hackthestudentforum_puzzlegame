@@ -36,17 +36,39 @@
                         <div class="content_login_bordered">
                             <div class="content_login">
                                 <!-- create login form -->
-                                <p align="center"><b>Login</b></p>
-                                <form action="/login" method="post">
+                                <p align="center"><b>locker</b></p>
+                                <div style="text-align: center;">
                                     <div class="login_form">
-                                        <input type="text" name="username" id="username" placeholder="Username">
+                                        <input type="text" name="id" id="id" placeholder="id">
                                     </div>
                                     <div class="login_form">
-                                        <input type="password" name="password" id="password" placeholder="Password - 4 digits number">
+                                        <input type="password" name="key" id="key" placeholder="key">
                                     </div>
                                     <div class="login_form">
-                                        <input type="submit" value="Login">
+                                        <input class="unlocker" type="submit" value="submit">
                                     </div>
+                                    <p class="status"style="color: lightgreen;">status:</p>
+                                    <script>
+                                        $(".unlocker").click(function(){
+                                            var id = $("#id").val();
+                                            var key = $("#key").val();
+                                            $.ajax({
+                                                url: `/${id}/index/${key}/1/1`,
+                                                get: "get",
+                                                success: function(data){
+
+                                                    $(".status").text("status: ");
+                                                    $(".status").text("status: " + "success");
+                                                    window.location.replace(`/${id}/index/${key}/1/1`);
+                                                },
+                                                error: function(data){
+                                                    $(".status").text("status: ");
+                                                    $(".status").text("status: " + data.statusText);
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                </div>
                             </div>
                         </div>
                     

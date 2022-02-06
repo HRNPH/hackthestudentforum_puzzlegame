@@ -49,7 +49,7 @@ router.get('/article/:id', (req , res) => {
   let id = req.params.id;
   let o_id = ObjectId(id);
   Article.findOne({_id: o_id}, (err, article) => {
-    console.log(article);
+    // console.log(article);
     if (err) return console.error(err);
     else{
       res.render(__dirname +'/views/white/article.ejs',{'title': article.title, 'author': article.author, 'content': article.content});
