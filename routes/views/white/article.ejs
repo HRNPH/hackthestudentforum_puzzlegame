@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- article -->
+    <head>
+        <title>Nawameow Forum</title>
+        <link rel="stylesheet" href="/white/forum.css">
+    </head>
+    <!-- article body -->
+    <body>
+        <div class="forum_bordered">
+            <li class="forum_structure">
+                <div class="forum_header">
+                    <a href='/'><h1>Nawameow Forum</h1></a>
+                </div>
+                <h1>
+                    <%=title%>
+                </h1>
+                <h2>
+                    <%=author%>
+                </h2>
+                <!-- article DB here -->
+                <article class="forum_article">
+                    <div class="forum_article_header">
+
+                    </div>
+                    <!-- need contents DB -->
+                    <div class="forum_article_content">
+                        <p>
+                            <%-content%>
+                        </p>
+                    </div>
+            </li>
+            </article>
+        </div> <!-- end of bordered -->
+    </body>

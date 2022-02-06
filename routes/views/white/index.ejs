@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- nawameow student forum -->
+<!-- color theme #f8a04d; -->
+<head>
+    <title>Nawameow Forum</title>
+    <link rel="stylesheet" href="/white/index.css">
+    <link rel="stylesheet" href="/white/diary.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="bordered">
+        <div>
+
+            <div>
+                <header class="main_header">
+                    <h1>Nawameow : Student Forum</h1>
+                </header>
+            </div>
+
+            <div class="body_container">
+                
+                <div class="nav_container">
+                    <ul class="nav_bar">
+                        <div class="bar active">
+                            <p class="bar_text">lastest</p>
+                        </div>
+                        <div class="nav_divider"><p>|</p></div>
+                        <div class="bar">
+                            <p class="bar_text"><i class="hidden_cl">there's hidden</i>All <i class="hidden_cl">article page</i></p>
+                        </div>
+                    </ul>
+                </div>
+                
+                <div class="content_container">
+                        <div class="content_login_bordered">
+                            <div class="content_login">
+                                <!-- create login form -->
+                                <p align="center"><b>locker</b></p>
+                                <div style="text-align: center;">
+                                    <div class="login_form">
+                                        <input type="text" name="id" id="id" placeholder="id">
+                                    </div>
+                                    <div class="login_form">
+                                        <input type="password" name="key" id="key" placeholder="key">
+                                    </div>
+                                    <div class="login_form">
+                                        <input class="unlocker" type="submit" value="submit">
+                                    </div>
+                                    <p class="status"style="color: lightgreen;">status:</p>
+                                    <script>
+                                        $(".unlocker").click(function(){
+                                            var id = $("#id").val();
+                                            var key = $("#key").val();
+                                            $.ajax({
+                                                url: `/${id}/index/${key}/1/1`,
+                                                get: "get",
+                                                success: function(data){
+
+                                                    $(".status").text("status: ");
+                                                    $(".status").text("status: " + "success");
+                                                    window.location.replace(`/${id}/index/${key}/1/1`);
+                                                },
+                                                error: function(data){
+                                                    $(".status").text("status: ");
+                                                    $(".status").text("status: " + data.statusText);
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    <div class="content_diary_container">
+                        <ul class="diary_list">
+                            <%- diary_cards%>
+                        </ul>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    </script>
+</body>

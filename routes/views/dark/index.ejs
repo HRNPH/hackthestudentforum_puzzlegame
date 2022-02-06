@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- nawameow student forum -->
+<!-- color theme #f8a04d; -->
+<head>
+    <title>Truth Forum</title>
+    <link rel="stylesheet" href="/dark/index.css">
+    <link rel="stylesheet" href="/dark/diary.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="bordered">
+        <div>
+
+            <div>
+                <header class="main_header">
+                    <a href="/dark/index/ihatemylife/1/1/"><h1>Everyone have their own SECRET</h1></a>
+                </header>
+            </div>
+
+            <div class="body_container">
+                
+                <div class="nav_container">
+                    <ul class="nav_bar">
+                        <div class="bar active">
+                            <p class="bar_text">lastest</p>
+                        </div>
+                        <div class="nav_divider"><p>|</p></div>
+                        <div class="bar">
+                            <a href="/"><p class="bar_text"><i class="hidden_cl; color:black;" >get back to lie?</i></p></a>
+                        </div>
+                    </ul>
+                </div>
+                
+                <div class="content_container">
+                        <div class="content_login_bordered">
+                            <div class="content_login">
+                                <!-- create login form -->
+                                <p align="center"><b>truth seeker</b></p>
+                                <div>
+                                    <div class="login_form">
+                                        <input type="text" name="card_id" id="card_id" placeholder="article_id">
+                                    </div>
+                                    <div class="login_form">
+                                        <input type="text" name="card_key" id="card_key" placeholder="key">
+                                    </div>
+                                    <div align="center" class="login_form">
+                                        <button class="seek" name="seek" type="submit">seek</button>
+                                        <p id="result" style="color: red;">result:</p>
+                                    </div>
+    
+                                </div>
+                                <script>
+                                    $('.seek').click(() => {
+                                        $.ajax
+                                        ({ 
+                                            url: `/dark/index/ihatemylife/${$('#card_id').val()}/${$('#card_key').val()}`,
+                                            data: {
+                                                card_id: $('#card_id').val(),
+                                                card_key: $('#card_key').val()
+                                            },
+                                            
+                                            type: 'get',
+                                            success: function(data)
+                                            {   
+                                                $('#result').text('')
+                                                $('#result').text('success');
+                                                window.location.replace(`/dark/index/ihatemylife/${$('#card_id').val()}/${$('#card_key').val()}`);
+                                            },
+                                            error: function (error)
+                                            {
+                                                $('#result').text('')
+                                                $('#result').text(error.status + ' ' + error.statusText);
+                                            }
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    
+                    <div class="content_diary_container">
+                        <ul class="diary_list">
+                            <%- diary_cards%>
+                        </ul>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    </script>
+</body>
