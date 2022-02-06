@@ -14,7 +14,7 @@
 
             <div>
                 <header class="main_header">
-                    <h1>Everyone have their own SECRET</h1>
+                    <a href="/dark/index/ihatemylife/1/1/"><h1>Everyone have their own SECRET</h1></a>
                 </header>
             </div>
 
@@ -37,16 +37,44 @@
                             <div class="content_login">
                                 <!-- create login form -->
                                 <p align="center"><b>secret seeker</b></p>
-                                <form action="/login" method="post">
+                                <div>
                                     <div class="login_form">
-                                        <input type="text" name="id" id="id" placeholder="article_id">
+                                        <input type="text" name="card_id" id="card_id" placeholder="article_id">
                                     </div>
                                     <div class="login_form">
-                                        <input type="text" name="key" id="key" placeholder="key">
+                                        <input type="text" name="card_key" id="card_key" placeholder="key">
                                     </div>
                                     <div align="center" class="login_form">
-                                        <input type="submit" value="seek">
+                                        <button class="seek" name="seek" type="submit">seek</button>
+                                        <p id="result" style="color: red;">result:</p>
                                     </div>
+    
+                                </div>
+                                <script>
+                                    $('.seek').click(() => {
+                                        $.ajax
+                                        ({ 
+                                            url: `/dark/index/ihatemylife/${$('#card_id').val()}/${$('#card_key').val()}`,
+                                            data: {
+                                                card_id: $('#card_id').val(),
+                                                card_key: $('#card_key').val()
+                                            },
+                                            
+                                            type: 'get',
+                                            success: function(data)
+                                            {   
+                                                $('#result').text('')
+                                                $('#result').text('success');
+                                                window.location.replace(`/dark/index/ihatemylife/${$('#card_id').val()}/${$('#card_key').val()}`);
+                                            },
+                                            error: function (error)
+                                            {
+                                                $('#result').text('')
+                                                $('#result').text(error.status + ' ' + error.statusText);
+                                            }
+                                        });
+                                    });
+                                </script>
                             </div>
                         </div>
                     

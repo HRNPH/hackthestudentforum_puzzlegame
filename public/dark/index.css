@@ -70,3 +70,7 @@ body{
     border: 10px solid red;
     border-radius: 10px;
 }
+a{
+    color: red;
+    text-decoration: none;
+}

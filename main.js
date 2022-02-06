@@ -32,7 +32,6 @@ app.use('/dark', darkindex);
 
 app.use('/create', article_creator);
 
-
 db.then((result) => {
     // create webserver with node js
     app.listen(port, (err) => {

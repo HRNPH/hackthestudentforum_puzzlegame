@@ -3,22 +3,61 @@ const router = require('express').Router();
 //get card ejs
 const cards = require('./views/diary_card.js');
 
-router.get('/index/:key', (req , res) => {
-    if (req.params.key == 'ihatelife') {
-      res.render(__dirname +'/views/dark/index.ejs',{diary_cards: cards(['no cards'],['no cards'])});
-        
-    }
-    else {
-        res.send('<h1 align="center" style="color: red;">Require Key params</h1>');
-    }
-  });
-
 //get the data from the db
 //import db
 const db = require('../database/database');
 const ObjectId = require('mongodb').ObjectId;
 //import db model
 const Article = require('../database/models/article');
+
+router.get('/index/:key/:card_id/:card_key', (req , res) => {
+    if (req.params.key == 'ihatemylife' && req.params.card_id == '1' && req.params.card_key == '1') {
+      
+      res.render(__dirname +'/views/dark/index.ejs',{diary_cards: cards()});
+        
+    }
+    else if (req.params.key == 'ihatemylife') {
+      let o_id
+      try{
+        o_id = ObjectId(req.params.card_id);
+      } catch(err) {
+        res.status(404);
+        res.render(__dirname +'/views/error/404.ejs',{'error': '404 Error wrong key'});
+      }
+      
+      Article.findOne({_id:o_id}, (err, article) => {
+        console.log(article);
+        if (err){
+          res.status(404);
+          res.render(__dirname +'/views/error/404.ejs',{'error': '404 Error wrong id/key'});
+          return console.error(err);
+        } 
+        else{
+          try{
+          console.log(article);
+          if (req.params.card_key.toLowerCase() == article.key.toLowerCase()) {
+            
+            res.render(__dirname +'/views/dark/index.ejs',{'diary_cards': cards([article.secret_title],[article.author],[article.secret_description],[article._id],[article.key],true)});
+          
+          } 
+         } catch(err){
+          res.status(404);
+           res.render(__dirname +'/views/error/404.ejs',{'error': '404 Error wrong id/key'});
+           return console.error(err);
+         }
+        }
+    
+      })
+
+        
+    }
+    else {
+      res.status(404);
+        res.render(__dirname +'/views/error/404.ejs',{'error': 'require "key" parameter'});
+    }
+  });
+
+
 
 router.get('/article/:id/:key', (req , res) => {
   let key = req.params.key;
@@ -27,7 +66,8 @@ router.get('/article/:id/:key', (req , res) => {
   Article.findOne({_id:o_id}, (err, article) => {
     console.log(article);
     if (err){
-      res.send('<h1 align="center" style="color: red;">404 Error No article found</h1>');
+      res.status(404);
+      res.render(__dirname +'/views/error/404.ejs',{'error': '404 no article found'});
       return console.error(err);
     } 
     else{
@@ -35,7 +75,8 @@ router.get('/article/:id/:key', (req , res) => {
         res.render(__dirname +'/views/dark/article.ejs',{'title': article.secret_title, 'author': article.secret_author, 'content': article.secret_content});
       
       } else{
-        res.send('<h1 align="center" style="color: red;">Require Key</h1>');
+        res.status(404);
+        res.render(__dirname +'/views/error/404.ejs',{'error': '404 Require "key" parameter'});
       }
     }
 
